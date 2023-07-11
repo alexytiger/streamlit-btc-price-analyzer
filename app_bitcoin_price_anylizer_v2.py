@@ -14,9 +14,32 @@ import openai
 import json
 import requests
 import streamlit as st
+import os
 
+# When developing your app locally, add a file called secrets.toml 
+# in a folder called .streamlit at the root of your app repo, 
+# and copy/paste your secrets into that file. 
 
-openai.api_key = "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"
+# Access your secrets as environment variables or by querying the st.secrets dict. 
+# For example, if you enter the secrets from the section above, 
+# the code below shows you how you can access them within your Streamlit app.
+
+# Everything is accessible via the st.secrets dict:
+# st.write("DB username:", st.secrets["db_username"]) # DB username from secrets is printed
+# st.write("DB password:", st.secrets["db_password"]) # DB password from secrets is printed
+# st.write("My cool secrets:", st.secrets["my_cool_secrets"]["things_i_like"]) # Other secrets 
+
+# Root-level secrets are also accessible as environment variables.
+# import os
+
+# Checks if the environment variable and the secret from st.secrets are the same
+#st.write(
+#   "Has environment variables been set:",
+#   os.environ["db_username"] == st.secrets["db_username"],
+#)
+
+# !!!!And the root-level secrets are also accessible as environment variables
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Set this to `True` if you need GPT4. If not, the code will use GPT-3.5.
 GPT4 = True
