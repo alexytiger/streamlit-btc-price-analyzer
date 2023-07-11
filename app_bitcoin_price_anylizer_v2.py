@@ -16,7 +16,7 @@ import requests
 import streamlit as st
 
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 # Set this to `True` if you need GPT4. If not, the code will use GPT-3.5.
 GPT4 = True
